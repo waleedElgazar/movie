@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { Movie } from '../Movie';
 import { MovieService } from '../movie.service';
 
@@ -8,9 +8,15 @@ import { MovieService } from '../movie.service';
   styleUrls: ['./search-component.component.css']
 })
 export class SearchComponentComponent{
-  @Input() newItem = '';
+  @Output()
+  movieName = new EventEmitter<string>();
+
   constructor(private MovieService:MovieService){}
- 
+
+   sendToParent(movieValue: string){
+     this.movieName.emit(movieValue);
+   }
+
   getMovie(title:string){
     console.log(title)
     console.log(this.MovieService.getMovieWithTitle(title));

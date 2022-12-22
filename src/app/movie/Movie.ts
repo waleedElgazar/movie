@@ -8,7 +8,7 @@ export class Movie{
         this.title=title;
         this.rate=rate;
         this.img=img;
-        this.category;
+        this.category=category;
         this.year=year;
     }
 }

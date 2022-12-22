@@ -9,9 +9,7 @@ import { SearchComponentComponent } from './movie/search-component/search-compon
 
 @NgModule({
     declarations: [
-        AppComponent,
-        MovieComponentComponent,
-        SearchComponentComponent,
+        AppComponent
     ],
     providers: [],
     bootstrap: [AppComponent],

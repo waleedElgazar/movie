@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { Movie } from '../Movie';
 import { MovieService } from '../movie.service';
 
@@ -8,19 +8,33 @@ import { MovieService } from '../movie.service';
   styleUrls: ['./movie-component.component.css']
 })
 export class MovieComponentComponent implements OnInit{
-  @Output() newItem = new EventEmitter<string>();
+  @Input() newItemEvent = '';
+
   movies:Movie[]=[]
+  moviesFounded:Movie[]=[]
+
+  title = '';
+
   constructor(private MovieService:MovieService){
 
   }
   ngOnInit(): void {
     this.movies=this.MovieService.getMovies();
-    console.log(this.movies)
+    console.log(this.movies);
+
   }
 
-  getMovie(title:string){
-    console.log(title)
-    console.log(this.MovieService.getMovieWithTitle(title));
-    return this.MovieService.getMovieWithTitle(title);
+
+  getMovie(childName:string){
+    this.moviesFounded=[]
+    console.log("from parent "+JSON.stringify(this.MovieService.getMovieWithTitle(childName)));
+    if(this.MovieService.getMovieWithTitle(childName)!=undefined){
+      // @ts-ignore
+      this.moviesFounded.push(this.MovieService.getMovieWithTitle(childName));
+
+    }
+    // this.MovieService.getMovieWithTitle(childName);
+    this.movies=this.movies;
   }
+
 }

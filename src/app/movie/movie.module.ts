@@ -7,7 +7,12 @@ import { SearchComponentComponent } from './search-component/search-component.co
 
 @NgModule({
   declarations: [
-    // SearchComponentComponent
+    SearchComponentComponent,
+    MovieComponentComponent
+  ],
+  exports:[
+    SearchComponentComponent,
+    MovieComponentComponent
   ],
   imports: [
     CommonModule
